@@ -1,11 +1,5 @@
 #tictactoe_game.rb
 
-#TODO implement game board
-#TODO implement check_winner function
-#
-#think about what helper functions i might need
-#and encapsulate in modules
-
 
 
 #the game board should initialize an array with length of 9.
@@ -13,6 +7,8 @@
 #array to either 'X' or 'O' by the player
 class GameBoard
   attr_accessor :board
+  @winner = false
+
 
   def initialize
     self.board = Array.new(9) { |i| i+1 }
@@ -37,15 +33,44 @@ class GameBoard
   def set_O(number)
     board[number -1] = 'O'
   end
+
 end
 
-#TODO check input validation with a loop before using setters
-# if board.include?(number) set X or O else puts "invalid move" and prompts for valid input
+
 def game
   game_board = GameBoard.new
   game_board.display
   winner = false
   turn = 1
+
+  #this could be improved...
+  def check_winner(game_board_instance)
+     #checks to see if there is a winner and breaks the while loop
+    if (game_board_instance.board[0] == 'X' && game_board_instance.board[1] == 'X' && game_board_instance.board[2] == 'X') ||
+      (game_board_instance.board[3] == 'X' && game_board_instance.board[4] == 'X' && game_board_instance.board[5] == 'X') ||
+      (game_board_instance.board[6] == 'X' && game_board_instance.board[7] == 'X' && game_board_instance.board[8] == 'X') ||
+      (game_board_instance.board[0] == 'X' && game_board_instance.board[3] == 'X' && game_board_instance.board[6] == 'X') ||
+      (game_board_instance.board[1] == 'X' && game_board_instance.board[4] == 'X' && game_board_instance.board[7] == 'X') ||
+      (game_board_instance.board[2] == 'X' && game_board_instance.board[5] == 'X' && game_board_instance.board[8] == 'X') ||
+      (game_board_instance.board[0] == 'X' && game_board_instance.board[4] == 'X' && game_board_instance.board[8] == 'X') ||
+      (game_board_instance.board[2] == 'X' && game_board_instance.board[4] == 'X' && game_board_instance.board[6] == 'X')
+      puts "X is the Winner!!"
+      return true
+    elsif (game_board_instance.board[0] == 'O' && game_board_instance.board[1] == 'O' && game_board_instance.board[2] == 'O') ||
+      (game_board_instance.board[3] == 'O' && game_board_instance.board[4] == 'O' && game_board_instance.board[5] == 'O') ||
+      (game_board_instance.board[6] == 'O' && game_board_instance.board[7] == 'O' && game_board_instance.board[8] == 'O') ||
+      (game_board_instance.board[0] == 'O' && game_board_instance.board[3] == 'O' && game_board_instance.board[6] == 'O') ||
+      (game_board_instance.board[1] == 'O' && game_board_instance.board[4] == 'O' && game_board_instance.board[7] == 'O') ||
+      (game_board_instance.board[2] == 'O' && game_board_instance.board[5] == 'O' && game_board_instance.board[8] == 'O') ||
+      (game_board_instance.board[0] == 'O' && game_board_instance.board[4] == 'O' && game_board_instance.board[8] == 'O') ||
+      (game_board_instance.board[2] == 'O' && game_board_instance.board[4] == 'O' && game_board_instance.board[6] == 'O')
+      puts "The Winner is O!!"
+      return true
+    else
+      return false
+    end
+  end
+
   while winner == false
 
     if turn.odd?
@@ -63,14 +88,14 @@ def game
         turn += 1
       end
     end
-    check_winner()
+    winner = check_winner(game_board)
     game_board.display
   end
+
+
 end
 
-def check_winner
-  puts "Can't tell if there's a winner /shrug"
-end
+
 
 game()
 
