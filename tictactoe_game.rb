@@ -1,7 +1,7 @@
 #tictactoe_game.rb
 
 #TODO implement game board
-#TODO implement player class
+#TODO implement check_winner function
 #
 #think about what helper functions i might need
 #and encapsulate in modules
@@ -26,6 +26,16 @@ class GameBoard
     puts "-----------"
     puts " #{board[6]} | #{board[7]} | #{board[8]} "
   end
+
+  def set_X(number)
+    board[number - 1] = 'X'
+  end
+
+  def set_O(number)
+    board[number -1] = 'O'
+  end
+
+
 end
 
 #class Player
@@ -39,4 +49,9 @@ end
 puts game_board = GameBoard.new
 
 puts game_board.display
+
+game_board.set_X(4)
+game_board.set_O(5)
+
+game_board.display
 
