@@ -38,8 +38,12 @@ class GameBoard
   end
 end
 
-# check input validation with a loop before using setters
+#TODO check input validation with a loop before using setters
 # if board.include?(number) set X or O else puts "invalid move" and prompts for valid input
+def game
+
+end
+
 
 
 game_board = GameBoard.new
