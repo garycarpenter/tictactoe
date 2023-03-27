@@ -30,22 +30,16 @@ class GameBoard
   end
 
   def set_X(number)
-    if board.include?(number)
-      board[number - 1] = 'X'
-    else
-      puts "invalid move"    #perhaps move this out of these functions and check condition in a while loop
-    end
+    board[number - 1] = 'X'
   end
 
   def set_O(number)
-    if board.include?(number)
-      board[number -1] = 'O'
-    else
-      puts "invalid move"
-    end
+    board[number -1] = 'O'
   end
 end
 
+# check input validation with a loop before using setters
+# if board.include?(number) set X or O else puts "invalid move" and prompts for valid input
 
 
 game_board = GameBoard.new
@@ -53,5 +47,6 @@ game_board.display
 game_board.set_X(4)
 game_board.set_O(5)
 game_board.set_X(5)
+game_board.set_O(7)
 game_board.display
 
