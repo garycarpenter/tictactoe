@@ -16,6 +16,7 @@ class GameBoard
 
   def initialize
     self.board = Array.new(9) { |i| i+1 }
+    puts ":New Game:"
   end
 
   def display
@@ -41,16 +42,38 @@ end
 #TODO check input validation with a loop before using setters
 # if board.include?(number) set X or O else puts "invalid move" and prompts for valid input
 def game
+  game_board = GameBoard.new
+  game_board.display
+  winner = false
+  turn = 1
+  while winner == false
 
+    if turn.odd?
+      puts "Choose X: "
+      x = gets.chomp.to_i
+      if game_board.board.include?(x)
+        game_board.set_X(x)
+        turn += 1
+      end
+    else
+      puts "Choose O: "
+      o = gets.chomp.to_i
+      if game_board.board.include?(o)
+        game_board.set_O(o)
+        turn += 1
+      end
+    end
+    check_winner()
+    game_board.display
+  end
 end
 
+def check_winner
+  puts "Can't tell if there's a winner /shrug"
+end
+
+game()
 
 
-game_board = GameBoard.new
-game_board.display
-game_board.set_X(4)
-game_board.set_O(5)
-game_board.set_X(5)
-game_board.set_O(7)
-game_board.display
+
 
