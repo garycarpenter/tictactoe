@@ -1,7 +1,7 @@
 #tictactoe_game.rb
 
 
-
+MAX_TURN = 10
 #the game board should initialize an array with length of 9.
 #the class should have a method for setting elements in the
 #array to either 'X' or 'O' by the player
@@ -38,6 +38,7 @@ def game
   game_board.display
   winner = false
   turn = 1
+
 
   #this could be improved...
   def check_winner(game_board_instance)
@@ -85,6 +86,9 @@ def game
     end
     winner = check_winner(game_board)
     game_board.display
+    if turn == MAX_TURN
+      break
+    end
   end
 end
 
