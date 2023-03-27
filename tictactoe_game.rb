@@ -7,8 +7,6 @@
 #array to either 'X' or 'O' by the player
 class GameBoard
   attr_accessor :board
-  @winner = false
-
 
   def initialize
     self.board = Array.new(9) { |i| i+1 }
@@ -33,9 +31,7 @@ class GameBoard
   def set_O(number)
     board[number -1] = 'O'
   end
-
 end
-
 
 def game
   game_board = GameBoard.new
@@ -72,7 +68,6 @@ def game
   end
 
   while winner == false
-
     if turn.odd?
       puts "Choose X: "
       x = gets.chomp.to_i
@@ -91,11 +86,7 @@ def game
     winner = check_winner(game_board)
     game_board.display
   end
-
-
 end
-
-
 
 game()
 
