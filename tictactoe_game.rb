@@ -20,38 +20,38 @@ class GameBoard
 
   def display
     # prints the current elements of the board array to the console in a three by three grid
+    puts ""
     puts " #{board[0]} | #{board[1]} | #{board[2]} "
     puts "-----------"
     puts " #{board[3]} | #{board[4]} | #{board[5]} "
     puts "-----------"
     puts " #{board[6]} | #{board[7]} | #{board[8]} "
+    puts ""
   end
 
   def set_X(number)
-    board[number - 1] = 'X'
+    if board.include?(number)
+      board[number - 1] = 'X'
+    else
+      puts "invalid move"    #perhaps move this out of these functions and check condition in a while loop
+    end
   end
 
   def set_O(number)
-    board[number -1] = 'O'
+    if board.include?(number)
+      board[number -1] = 'O'
+    else
+      puts "invalid move"
+    end
   end
-
-
 end
 
-#class Player
-  #maybe rethink this one... does player need to be a class?
-  #there's always going to be two players, and if the game
-  #engine knows to alternate X and O each turn and the gameboard
-  #instance can check for a winner, what do I really need a player
-  #class for unless I wanted to store individual player data
-#end
 
-puts game_board = GameBoard.new
 
-puts game_board.display
-
+game_board = GameBoard.new
+game_board.display
 game_board.set_X(4)
 game_board.set_O(5)
-
+game_board.set_X(5)
 game_board.display
 
